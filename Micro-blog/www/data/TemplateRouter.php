@@ -9,7 +9,7 @@ use Nette\Application\Routers;
  */
 class TemplateRouter extends Routers\RouteList
 {
-	public function __construct($path, $cachePath)
+	public function __construct(string $path, string $cachePath)
 	{
 		if (is_file($cacheFile = $cachePath . '/routes.php')) {
 			$routes = require $cacheFile;
@@ -32,7 +32,7 @@ class TemplateRouter extends Routers\RouteList
 	}
 
 
-	public function scanRoutes($path)
+	public function scanRoutes(string $path): array
 	{
 		$routes = [];
 		$latte = new Latte\Engine;
